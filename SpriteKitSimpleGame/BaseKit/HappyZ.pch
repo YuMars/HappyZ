@@ -1,0 +1,35 @@
+//
+//  HappyZ.pch
+//  SpriteKitSimpleGame
+//
+//  Created by Red-Fish on 2023/8/17.
+//  Copyright © 2023 chc. All rights reserved.
+//
+
+#ifndef HappyZ_pch
+#define HappyZ_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* HappyZ_pch */
+
+#ifdef __OBJC__
+
+#import "UIView+Util.h"
+#import "UIColor+Service.h"
+#import "MacroDefine.h"
+#import "UIColor+Util.h"
+#import "UIButton+Util.h"
+#import "UILabel+Util.h"
+#import "NSString+Size.h"
+#import "extobjc.h"
+#import "STImageView.h"
+#import "MBProgressHUD+Util.h"
+#import "STAlertView.h"
+#import <UIKit/UIKit.h>
+#import "SpriteKitSimpleGame-Swift.h"
+#import "HZAutoFitScreen.h"
+#import "UIWindow+QKSafeArea.h"
+
+#endif

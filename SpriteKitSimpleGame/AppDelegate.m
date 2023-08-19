@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "BaseTabBarVC.h"
+#import "BaseNavigationVC.h"
+#import "LoginVC.h"
 
 @interface AppDelegate ()
 
@@ -16,9 +19,29 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    //变更
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
     
-    // Override point for customization after application launch.
+    
+    if (!HZUserDefault.didLogin) {
+        LoginVC *vc = [[LoginVC alloc] init];
+        BaseNavigationVC *navCtrl = [[BaseNavigationVC alloc] initWithRootViewController:vc];
+        self.window.rootViewController = navCtrl;
+    } else {
+        BaseTabBarVC *tabbarVC = [[BaseTabBarVC alloc] init];
+        self.window.rootViewController = tabbarVC;
+    }
+
+    
+    [self.window makeKeyAndVisible];
+    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+    [UITabBar appearance].translucent = YES;
+    [UITabBar appearance].shadowImage = [UIImage imageWithColor:[UIColor clearColor]];
+    [UITabBar appearance].backgroundColor = [UIColor clearColor];
+//    [UITabBar appearance].backgroundImage = [UIImage imageWithColor:[UIColor clearColor]];
+    [UITabBar appearance].backgroundImage = [UIImage new];
     return YES;
 }
 
