@@ -145,7 +145,7 @@
     }];
     
     [_scene removeActionForKey:@"musicAction"];
-    [_skView delete:<#(nullable id)#>];
+    
     
     [_scene removeAllActions];
     [_scene removeAllChildren];

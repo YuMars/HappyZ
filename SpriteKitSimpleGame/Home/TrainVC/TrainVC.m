@@ -48,28 +48,34 @@ UITableViewDataSource
 
 #pragma mark – Public Methods
 
+- (void)setString:(NSString *)string {
+    _string = string;
+    
+    self.titleLbl.text = string;
+}
+
 #pragma mark – Override
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.dataArray = @[
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"train_cover_1",
           [NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
         @"浙江省人民医院",@"习惯养成", @"术后2-3周", @"步态训练", @"W2 术后2-3天 5组 10分钟 健康第一步",],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"train_cover_2",
           [NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
         @"省立同德医院",@"趣味课", @"术后2周", @"股四头肌强化训练", @"W1 术后1周 15分钟 防静脉血栓",],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"train_cover_3",
           [NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
         @"",@"习惯养成", @"术后2-3周", @"步态训练", @"W2 术后2-3天 5组 10分钟 健康第一步",],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"train_cover_4",
           [NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
         @"",@"习惯养成", @"术后2-3周", @"步态训练", @"W2 术后2-3天 5组 10分钟 健康第一步",],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"train_cover_5",
           [NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
         @"",@"习惯养成", @"术后2-3周", @"步态训练", @"W2 术后2-3天 5组 10分钟 健康第一步",],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"train_cover_6",
           [NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
         @"",@"习惯养成", @"术后2-3周", @"步态训练", @"W2 术后2-3天 5组 10分钟 健康第一步",],
     ].mutableCopy;
@@ -128,11 +134,19 @@ UITableViewDataSource
 #pragma mark – Private Selector
 
 - (void)likeBtnAction {
+    if (self.likeBtn.selected) {
+        self.likeLbl.textColor = [UIColor colorWithHexString:@"#414141"];
+        self.likeImgV.image = [UIImage imageNamed:@"train_like"];
+    } else {
+        self.likeLbl.textColor = [UIColor redColor];
+        self.likeImgV.image = [[UIImage imageNamed:@"train_like"] imageChangeColor:[UIColor redColor]];
+    }
     
+    self.likeBtn.selected = !self.likeBtn.selected;
 }
 
 - (void)dayBtnAction {
-    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"calshow://"]];
 }
 
 #pragma mark - UITableViewDataSource & UITableViewDelegate
@@ -175,6 +189,7 @@ UITableViewDataSource
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     TrainDetailVC *vc = [[TrainDetailVC alloc] init];
+    vc.string = self.dataArray[indexPath.row][5];
     vc.data = self.dataArray[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }

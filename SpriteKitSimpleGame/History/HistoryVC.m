@@ -10,7 +10,7 @@
 
 @interface HistoryVC ()
 
-@property (nonatomic, strong) UILabel *lbl;
+@property (nonatomic, strong) UIImageView *bgV;
 
 @end
 
@@ -22,19 +22,19 @@
     self.navigationController.navigationBar.hidden = YES;
     
     [self.view addSubviews:@[
-        self.lbl
+        self.bgV
     ]];
     
     self.view.backgroundColor = [UIColor colorWithHexString:@"#45b97c"];
-    self.lbl.frame = self.view.bounds;
+    self.bgV.frame = self.view.bounds;
 }
 
-- (UILabel *)lbl {
-    if (!_lbl) {
-        _lbl = [UILabel labelWithText:@"第三个界面" font:FitFontNormal(36.0) textColor:[UIColor colorWithHexString:@"#ffffff"]];
-        _lbl.textAlignment = NSTextAlignmentCenter;
+- (UIImageView *)bgV {
+    if (!_bgV) {
+        _bgV = [[UIImageView alloc] init];
+        _bgV.image = [UIImage imageNamed:@"main_view_3"];
     }
-    return _lbl;
+    return _bgV;
 }
 
 @end

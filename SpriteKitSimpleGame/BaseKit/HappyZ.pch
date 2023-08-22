@@ -31,5 +31,6 @@
 #import "SpriteKitSimpleGame-Swift.h"
 #import "HZAutoFitScreen.h"
 #import "UIWindow+QKSafeArea.h"
+#import "AAGlobalMacro.h"
 
 #endif

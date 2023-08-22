@@ -23,7 +23,8 @@
 - (void)setData:(NSMutableArray *)data {
     _data = data;
     
-    [self.bgV setUrl:data[0] placehodlerName:@"train_detail_bg"];
+//    [self.bgV setUrl:data[0] placehodlerName:@"train_detail_bg"];
+    self.bgV.image = [UIImage imageNamed:data[0]];
     self.titleLbl.text = data[1];
     self.timeLbl.text = data[2];
     

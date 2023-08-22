@@ -131,7 +131,12 @@
 //    [_NearbyArray addObject:_background2];
     self.musicAction = [SKAction repeatActionForever:[SKAction playSoundFileNamed:@"game_music.mp3" waitForCompletion:YES]];
     
-    [self runAction:self.musicAction withKey:@"musicAction"];
+//    [self runAction:self.musicAction withKey:@"musicAction1111"];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@"removeActionForKey");
+        [self removeActionForKey:@"musicAction1111"];
+    });
 }
 
 - (void)initScroe{

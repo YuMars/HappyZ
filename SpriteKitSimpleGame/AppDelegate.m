@@ -35,7 +35,7 @@
     
     [self.window makeKeyAndVisible];
     
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDarkContent;
     
     [UITabBar appearance].translucent = YES;
     [UITabBar appearance].shadowImage = [UIImage imageWithColor:[UIColor clearColor]];

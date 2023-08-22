@@ -31,6 +31,12 @@
     self.hbd_tintColor = [UIColor clearColor];
 }
 
-
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    if (@available(iOS 13.0, *)) {
+        return UIStatusBarStyleDarkContent;
+    } else {
+        return UIStatusBarStyleDefault;
+    }
+}
 
 @end

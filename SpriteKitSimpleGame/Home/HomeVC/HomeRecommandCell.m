@@ -8,6 +8,7 @@
 
 #import "HomeRecommandCell.h"
 #import "TrainVC.h"
+#import "ResultVC.h"
 @interface HomeRecommandCollectionCell : UICollectionViewCell
 
 @property (nonatomic, strong) STImageView *bgV;
@@ -26,9 +27,9 @@
 
 - (void)setDataArray:(NSMutableArray *)dataArray {
     _dataArray = dataArray;
-    
-    [self.bgV setUrl:dataArray[0] placehodlerName:@"home_recommand_bg"];
-//    self.bgV.image = [UIImage imageNamed:dataArray[0]];
+
+//    [self.bgV setUrl:dataArray[0] placehodlerName:@"home_recommand_bg"];
+    self.bgV.image = [UIImage imageNamed:dataArray[0]];
     self.titleLbl.text = dataArray[1];
     self.tagLbl1.text = dataArray[2];
     self.tagLbl2.hidden = [dataArray[3] length] == 0;
@@ -194,7 +195,9 @@ UICollectionViewDataSource
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+//    ResultVC *vc = [[ResultVC alloc] init];
     TrainVC *vc = [[TrainVC alloc] init];
+    vc.string = self.dataArray[indexPath.row][1];
     [self.viewController.navigationController pushViewController:vc animated:YES];
 }
 

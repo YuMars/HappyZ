@@ -26,7 +26,8 @@
 - (void)setDataArray:(NSMutableArray *)dataArray {
     _dataArray = dataArray;
     
-    [self.bgV setUrl:dataArray[0] placehodlerName:@"home_recommand_bg"];
+//    [self.bgV setUrl:dataArray[0] placehodlerName:@"home_recommand_bg"];
+    self.bgV.image = [UIImage imageNamed:dataArray[0]];
     self.tagLbl1.text = dataArray[1];
     self.tagLbl2.hidden = [dataArray[2] length] == 0;
     self.tagLbl2.text = dataArray[2];

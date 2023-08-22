@@ -37,29 +37,29 @@ UITableViewDataSource
     self.tableView.frame = self.view.bounds;
     
     self.recommandArray = [NSMutableArray arrayWithArray:@[
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"hom_cover_1_1",
           @"今日训练计划",
           @"习惯养成",
           @"术后2-3天",
           @"DAY 5-踝关节康复",
           @"10分钟髋关节置换下地行走打卡"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"hom_cover_1_2",
           @"运动小tips",
           @"科学训练",
           @"",
           @"练前热身 练后拉伸",
           @"练前练后的热身拉伸运动"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],@"明日训练计划", @"跟练计划",
+        @[@"hom_cover_1_3",@"明日训练计划", @"跟练计划",
           @"坚持",
           @"如何做到循环呼吸",
           @"两步一呼两步一吸"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"hom_cover_1_4",
           @"膝盖恢复",
           @"半月板",
           @"明天",
           @"身体的蜕变离不开坚定的意志",
           @"大体重尽量避免"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"hom_cover_1_1",
           @"酷暑开练",
           @"逆袭",
           @"",
@@ -68,11 +68,11 @@ UITableViewDataSource
     ].mutableCopy];
     
     self.trainArray = [NSMutableArray arrayWithArray:@[
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000], @"官方教程", @"术后2周", @"5分钟辅助被动抬腿训练",@"W1 术后1周 防静脉血栓"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000], @"AR趣味课", @"术后1周", @"5分钟下肢力量",@"W1 术后1周"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000], @"逆袭", @"术后", @"是狂热还是痴狂",@"提升耐力"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000], @"跟练计划", @"坚持", @"如何做到循环呼吸", @"两步一呼两步一吸"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000], @"半月板", @"明天", @"身体的蜕变离不开坚定的意志",@"大体重尽量避免"],
+        @[@"hom_cover_2_1", @"官方教程", @"术后2周", @"5分钟辅助被动抬腿训练",@"W1 术后1周 防静脉血栓"],
+        @[@"hom_cover_2_2", @"AR趣味课", @"术后1周", @"5分钟下肢力量",@"W1 术后1周"],
+        @[@"hom_cover_2_3", @"逆袭", @"术后", @"是狂热还是痴狂",@"提升耐力"],
+        @[@"hom_cover_2_4", @"跟练计划", @"坚持", @"如何做到循环呼吸", @"两步一呼两步一吸"],
+        @[@"hom_cover_2_5", @"半月板", @"明天", @"身体的蜕变离不开坚定的意志",@"大体重尽量避免"],
     ].mutableCopy];
 }
 

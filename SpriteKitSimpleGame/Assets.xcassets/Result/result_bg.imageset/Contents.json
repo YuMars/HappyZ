@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "其中包括图片：Premium Photo  Asian woman patient with bandage compressio 1.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

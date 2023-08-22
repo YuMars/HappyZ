@@ -15,12 +15,14 @@
 @interface TrainDetailVC ()
 <
 UICollectionViewDelegate,
-UICollectionViewDataSource
+UICollectionViewDataSource,
+AVPlayerViewControllerDelegate
 >
 
 @property (nonatomic, strong) AVPlayerViewController *playerV;
 @property (nonatomic, strong) AVPlayer *avPlayer;
 @property (nonatomic, strong) AVPlayerItem *item;
+@property (nonatomic, strong) UIImageView *playActionV;
 
 @property (nonatomic, strong) UIView *topV;
 @property (nonatomic, strong) UIButton *backBtn;
@@ -51,27 +53,33 @@ UICollectionViewDataSource
 
 @implementation TrainDetailVC
 
+- (void)setString:(NSString *)string {
+    _string = string;
+    
+    self.titleLbl.text = string;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.dataArray = @[
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"train_cover_1_1",
           @"课程开始",@"00:14"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"train_cover_1_2",
           @"踝关节左右拉伸",@"02:14"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"train_cover_1_3",
           @"踝关节环绕训练",@"20:54"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"train_cover_1_4",
           @"踝关节动作保持",@"10:13"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"train_cover_1_5",
           @"放松踝关节",@"14:14"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"train_cover_1_6",
           @"练后拉伸",@"22:33"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"train_cover_1_7",
           @"拉伸课程",@"03:16"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"train_cover_1_8",
           @"放松动作",@"2c0:14"],
-        @[[NSString stringWithFormat:@"https://source.unsplash.com/random/%dx%d", arc4random() % 1000,arc4random() % 1000],
+        @[@"train_cover_1_1",
           @"课程结束",@"00:14"]
     ].mutableCopy;
     
@@ -93,6 +101,7 @@ UICollectionViewDataSource
         self.playerV.view,
         self.playcorV,
         self.courseLbl,
+        self.playActionV,
     ]];
     
     [self.bottomView addSubviews:@[
@@ -116,11 +125,14 @@ UICollectionViewDataSource
     
     self.playBG.frame = CGRectMake(0.0, self.topV.bottom + FitFloat(20.0), self.view.width, FitFloat(248.0));
     self.playerV.view.frame = CGRectMake(0.0, 0.0, self.view.width, FitFloat(231.0));
+//    self.playerV.view.frame = self.view.bounds;
     self.playcorV.frame = CGRectMake(0.0, FitFloat(212.0), self.view.width, FitFloat(46.0));
     self.courseLbl.frame = CGRectMake(FitFloat(31.0), FitFloat(226.0), self.view.width - FitFloat(31.0 * 2), FitFloat(22.0));
+    self.playActionV.frame = CGRectMake(0.0, 0.0, FitFloat(50.0), FitFloat(50.0));
+    self.playActionV.center = self.playerV.view.center;
     
     
-    self.collectionV.frame = CGRectMake(0.0, self.playBG.bottom, self.view.width, self.view.height - self.bottomView.height - self.playBG.bottom);
+    self.collectionV.frame = CGRectMake(0.0, self.playBG.bottom, self.view.width, self.view.height - self.bottomView.height - self.playBG.bottom - self.topV.height);
     
     self.bottomView.frame = CGRectMake(0.0, self.view.height - FitFloat(82.0), self.view.width, FitFloat(82.0));
     self.likeImgV.frame = CGRectMake(FitFloat(58.0), FitFloat(14.0), FitFloat(27.0), FitFloat(27.0));
@@ -135,14 +147,19 @@ UICollectionViewDataSource
     self.eyeImgV.frame = CGRectMake(self.leftImgV.left + FitFloat(15.0), self.leftImgV.top + FitFloat(12.0), FitFloat(14.0), FitFloat(11.0));
     self.leftLbl.frame = CGRectMake(self.leftImgV.x + FitFloat(33.0), self.leftImgV.y, FitFloat(56.0), self.leftImgV.height);
     self.rightLbl.frame = CGRectMake(self.rightImgV.x + FitFloat(26.88), self.leftImgV.y, FitFloat(56.0), self.leftImgV.height);
-    
-    
+        
 }
+
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
     [self.avPlayer pause];
+}
+
+- (void)dealloc {
+    [self.item removeObserver:self forKeyPath:@"loadedTimeRanges" context:nil];
+    [self.item removeObserver:self forKeyPath:@"status" context:nil];
 }
 
 - (void)player {
@@ -163,10 +180,18 @@ UICollectionViewDataSource
     
     //初始化AVPlayerViewController
     self.playerV = [[AVPlayerViewController alloc]init];
+    self.playerV.showsPlaybackControls = YES;
+    self.playerV.videoGravity = kCAGravityResizeAspect;
+    [self addChildViewController:self.playerV];
+    
     
     self.playerV.player=self.avPlayer;
     
     [self.view addSubview:self.playerV.view];
+    
+    self.playerV.delegate = self;
+    
+    [self.playerV.view addGestureTapTarget:self action:@selector(playActionVAction)];
     
     //替换AVPlayer中的AVPlayerItem
     //[self.player replaceCurrentItemWithPlayerItem:self.item];
@@ -203,7 +228,7 @@ UICollectionViewDataSource
             NSLog(@"playerItem is ready");
             
             //如果视频准备好 就开始播放
-            [self.avPlayer play];
+//            [self.avPlayer play];
             
         } else if(playerItem.status==AVPlayerStatusUnknown){
             NSLog(@"playerItem Unknown错误");
@@ -229,11 +254,20 @@ UICollectionViewDataSource
 #pragma mark – Private Selector
 
 - (void)likeBtnAction {
+    if (self.likeBtn.selected) {
+        self.likeLbl.textColor = [UIColor colorWithHexString:@"#414141"];
+        self.likeImgV.image = [UIImage imageNamed:@"train_like"];
+    } else {
+        self.likeLbl.textColor = [UIColor redColor];
+        self.likeImgV.image = [[UIImage imageNamed:@"train_like"] imageChangeColor:[UIColor redColor]];
+        
+    }
     
+    self.likeBtn.selected = !self.likeBtn.selected;
 }
 
 - (void)dayBtnAction {
-    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"calshow://"]];
 }
 
 
@@ -259,6 +293,19 @@ UICollectionViewDataSource
 
 
 #pragma mark - Custom Delegates
+
+- (void)playActionVAction {
+    
+    if (self.playActionV.hidden) {
+        self.playActionV.hidden = NO;
+        [self.avPlayer pause];
+    } else {
+        self.playActionV.hidden = YES;
+        [self.avPlayer play];
+    }
+
+    
+}
 
 #pragma mark - Private Property
 
@@ -316,6 +363,15 @@ UICollectionViewDataSource
         _playBG = [[UIView alloc] init];
     }
     return _playBG;
+}
+
+- (UIImageView *)playActionV {
+    if (!_playActionV) {
+        _playActionV = [[UIImageView alloc] init];
+        _playActionV.image = [UIImage imageNamed:@"train_detail_play"];
+        _playActionV.hidden = YES;
+    }
+    return _playActionV;
 }
 
 - (UIView *)playcorV {
@@ -417,6 +473,10 @@ UICollectionViewDataSource
         _rightImgV = [[UIImageView alloc] init];
         _rightImgV.image = [UIImage imageNamed:@"train_right"];
         _rightImgV.userInteractionEnabled = YES;
+        [_rightImgV addGestureTapEventHandle:^(id sender, UITapGestureRecognizer *gestureRecognizer) {
+            
+            
+        }];
     }
     return _rightImgV;
 }

@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TrainDetailVC : BaseVC
 
 @property (nonatomic, strong) NSMutableArray *data;
+@property (nonatomic, copy) NSString *string;
 
 @end
 

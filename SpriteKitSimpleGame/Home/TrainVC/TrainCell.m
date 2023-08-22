@@ -26,8 +26,9 @@
 
 - (void)setDataArray:(NSMutableArray *)dataArray {
     _dataArray = dataArray;
-    
-    [self.bgV setUrl:dataArray[0] placehodlerName:@"train_bg"];
+     
+    self.bgV.image = [UIImage imageNamed:dataArray[0]];
+//    [self.bgV setUrl:dataArray[0] placehodlerName:@"train_bg"];
     self.headImgV.hidden = [dataArray[1] length] == 0;
     [self.headImgV setUrl:dataArray[1] placehodlerName:@"home_head"];
     self.nameLbl.text = dataArray[2];

@@ -416,7 +416,14 @@ void printViewHierarchy(UIView *view, NSString *prefix) {
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return self.topViewController.hbd_barStyle == UIBarStyleBlack ? UIStatusBarStyleLightContent : UIStatusBarStyleDefault;
+    
+    if (@available(iOS 13.0, *)) {
+        return UIStatusBarStyleDarkContent;
+    } else {
+        return UIStatusBarStyleDefault;
+    }
+    
+//    return self.topViewController.hbd_barStyle == UIBarStyleBlack ? UIStatusBarStyleDarkContent : UIStatusBarStyleDefault;
 }
 
 - (UIViewController *)childViewControllerForHomeIndicatorAutoHidden {
