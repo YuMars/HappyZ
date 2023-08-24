@@ -298,18 +298,18 @@
         return parachute;
     };
     
-    if (_flyBulletTime >= 700) {
-        float speed = 10;
+    if (_flyBulletTime >= 800) {
+        float speed = 15;
         SKParachute *parachute = createParachute(SKParachuteTypeBullet);
         SKAction *action = [SKAction moveBy:CGVectorMake(20,20) duration:2];
         [parachute runAction:[SKAction sequence:@[action,[SKAction moveToY:0 duration:speed],[SKAction removeFromParent]]]];
         [self addChild:parachute];
         _flyBulletTime = 0;
     }
-    if (_flyBombTime >= 1000) {
-        float speed = 10;
+    if (_flyBombTime >= 500) {
+        float speed = 12;
         SKParachute *parachute = createParachute(SKParachuteTypeBomb);
-        SKAction *action = [SKAction moveBy:CGVectorMake(20,-40) duration:2];
+        SKAction *action = [SKAction moveBy:CGVectorMake(20,-40) duration:2.0];
         [parachute runAction:[SKAction sequence:@[action,[SKAction moveToY:0 duration:speed],[SKAction removeFromParent]]]];
         [self addChild:parachute];
         _flyBombTime = 0;

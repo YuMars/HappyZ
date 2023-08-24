@@ -42,7 +42,7 @@
 - (UIImageView *)bgV {
     if (!_bgV) {
         _bgV = [[UIImageView alloc] init];
-        _bgV.image = [UIImage imageNamed:@"main_view_2"];
+        _bgV.image = [UIImage imageNamed:@"main_view_4"];
     }
     return _bgV;
 }
