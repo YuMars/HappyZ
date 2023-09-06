@@ -213,7 +213,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EA8E81DD1E703CDE00902F43 /* SpriteKitSimpleGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteKitSimpleGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA8E81DD1E703CDE00902F43 /* HappyRecovery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyRecovery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA8E81E11E703CDE00902F43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EA8E81E31E703CDE00902F43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EA8E81E41E703CDE00902F43 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -631,7 +631,7 @@
 		EA8E81DE1E703CDE00902F43 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EA8E81DD1E703CDE00902F43 /* SpriteKitSimpleGame.app */,
+				EA8E81DD1E703CDE00902F43 /* HappyRecovery.app */,
 				EA8E81FD1E703CDE00902F43 /* SpriteKitSimpleGameTests.xctest */,
 				EA8E82081E703CDE00902F43 /* SpriteKitSimpleGameUITests.xctest */,
 			);
@@ -1463,7 +1463,7 @@
 			);
 			name = SpriteKitSimpleGame;
 			productName = SpriteKitSimpleGame;
-			productReference = EA8E81DD1E703CDE00902F43 /* SpriteKitSimpleGame.app */;
+			productReference = EA8E81DD1E703CDE00902F43 /* HappyRecovery.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EA8E81FC1E703CDE00902F43 /* SpriteKitSimpleGameTests */ = {
@@ -1913,10 +1913,11 @@
 				DEVELOPMENT_TEAM = KLKRN5VX8U;
 				GCC_PREFIX_HEADER = $SRCROOT/SpriteKitSimpleGame/BaseKit/HappyZ.pch;
 				INFOPLIST_FILE = SpriteKitSimpleGame/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HappyRecovery;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qingka.Test;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qk.flag;
+				PRODUCT_NAME = HappyRecovery;
 				SWIFT_OBJC_BRIDGING_HEADER = "SpriteKitSimpleGame/SpriteKitSimpleGame-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1931,10 +1932,11 @@
 				DEVELOPMENT_TEAM = KLKRN5VX8U;
 				GCC_PREFIX_HEADER = $SRCROOT/SpriteKitSimpleGame/BaseKit/HappyZ.pch;
 				INFOPLIST_FILE = SpriteKitSimpleGame/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HappyRecovery;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qingka.Test;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qk.flag;
+				PRODUCT_NAME = HappyRecovery;
 				SWIFT_OBJC_BRIDGING_HEADER = "SpriteKitSimpleGame/SpriteKitSimpleGame-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};

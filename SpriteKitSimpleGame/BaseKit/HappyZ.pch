@@ -28,7 +28,7 @@
 #import "MBProgressHUD+Util.h"
 #import "STAlertView.h"
 #import <UIKit/UIKit.h>
-#import "SpriteKitSimpleGame-Swift.h"
+#import "HappyRecovery-Swift.h"
 #import "HZAutoFitScreen.h"
 #import "UIWindow+QKSafeArea.h"
 #import "AAGlobalMacro.h"
